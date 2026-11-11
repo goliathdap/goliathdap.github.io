@@ -4,7 +4,7 @@ layout: default
 
 Here there will be a list of my projects and their appications.
 
-[Link to another page](./another-page.html).
+[Link to another page](David Dapper Google Cert Linux Permissions Lab.pdf)
 
 There should be whitespace between paragraphs.
 
