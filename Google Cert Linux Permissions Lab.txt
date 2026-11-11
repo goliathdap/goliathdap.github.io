@@ -1,0 +1,47 @@
+﻿File permissions in Linux for Google Certificates
+By David Dapper
+Project description
+For this lab, a set of research team users with access to the projects directory needed to be updated in order to reflect the principle of least privilege.
+Check file and directory details
+The first step was to check permissions for all files in the current working directory projects. This was achieved using the highlighted ls -la command which returns the permissions for files including hidden files. File group, owner name, size, and last edits are also returned by this command. Of particular interest was the file .project_x.txt--the dot before its title signifies that it’s a hidden file. In our first column, the ten character string represents the permissions set, and I break that down next. 
+
+
+  
+
+
+
+Describe the permissions string
+The ten character permissions string is explained simply enough:
+Character #1: if this character is a hyphen [-], then it’s a file. If it’s  [d] then it’s a directory.
+
+
+Characters #2-4: signify whether users have read [r], write [w], or execute [x] permissions. If the character is none of these but rather a hyphen [-], then the user is not granted the respective permission.
+
+
+Characters #5-7: signify group permission read, write, execute, or non-permission for access. 
+
+
+Characters #8-10: signify permissions for others. This set of permissions describes access for all members other than the user and the group. 
+
+
+e.g. if we examine the string assigned to project_r.txt in the above screengrab, we see that Character 1 is a hyphen, meaning we are looking at a file not a directory. Characters 3 and 6 are [w], therefore the user and group, but not others, have write permission. Characters 2, 5, 8 are all [r], signifying that the user, group, and others may read the file.Since [x] does not appear anywhere in the string, no one has access to execute the file. 
+Change file permissions
+It was directed that others shouldn’t have write [r] permissions for organizational files. Referring to the permission strings, I saw that project_k.txt still had write permissions enabled for others, so I changed the permission using the following code: chmod o-w project_k.txt. The chmod command changes the permissions; the first argument describes what permissions to modify; the second argument describes which file or directory.
+
+
+  
+
+Change file permissions on a hidden file
+Going back to the hidden file .project_x.txt, the research group archived the file recently, and I was instructed to remove write permissions for everyone, but allow the user and group to still have read permissions on the file. To achieve this I wrote the following code: chmod u-w, g-w, g+r .project_x.txt. I also verified that permissions had been updated by again using the ls -la command. Note that the following screen grab also displays the newly modified permissions for project_k.txt with others no longer having write permission.
+
+
+  
+
+Change directory permissions
+Finally  I was directed to restrict permission for access to the drafts directory and its contents to researcher2. As you can see from character #7 of the permissions string assigned to drafts, currently the research_team group also has execute access. To change this I entered the following code; chmod g-x drafts. Then after entering the code ls -la, we can see from the following screengrab that execute permissions were removed for the group section of the drafts directory.
+
+
+  
+
+Summary
+I was able to practice linux commands and update authorization following the principle of least privilege with this lab. I checked over file and directory permissions, and modified the appropriate permissions using the chmod command. In this rising age of AI agents, I believe it’s still important to practice these fundamentals and to be capable of acting as more than a human in the loop.
