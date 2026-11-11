@@ -4,7 +4,7 @@ layout: default
 
 Here there will be a list of my projects and their applications.
 
-[Linux Permissions Lab]<([David Dapper Google Cert Linux Permissions Lab.pdf](https://github.com/goliathdap/goliathdap.github.io/blob/main/David%20Dapper%20Google%20Cert%20Linux%20Permissions%20Lab.pdf))>
+[Linux Permissions Lab](https://github.com/goliathdap/goliathdap.github.io/blob/main/David%20Dapper%20Google%20Cert%20Linux%20Permissions%20Lab.pdf)
 
 There should be whitespace between paragraphs.
 
